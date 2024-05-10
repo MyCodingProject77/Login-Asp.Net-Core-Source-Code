@@ -1,0 +1,81 @@
+
+
+
+          @model HotelManagement.Models.VMLogin;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #800080;
+            height: 100vh;
+        }
+
+        #login .container #login-row #login-column #login-box {
+            margin-top: 120px;
+            max-width: 400px;
+            margin-left: 30px;
+            height: 350px;
+            border: 1px solid #9C9C9C;
+            background-color: #EAEAEA;
+        }
+
+            #login .container #login-row #login-column #login-box #login-form {
+                padding: 30px;
+            }
+
+                #login .container #login-row #login-column #login-box #login-form #register-link {
+                    margin-top: -85px;
+                }
+    </style>
+</head>
+<body>
+
+    <div id="login">
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        @using (Html.BeginForm("Login", "Access", FormMethod.Post))
+                        {
+                            <h3 class="text-center text-danger">Login</h3>
+                            <div class="form-group">
+                                <label for="username" class="text-danger">Email:</label><br>
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email", @required = true })
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-danger">Password:</label><br>
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password", @required = true })
+                            </div>
+                            <div class="form-group">
+                                
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                            </div>
+                            
+                            @if (ViewData["ValidateMessage"] != null)
+                            {
+                                
+                                <label>@ViewData["ValidateMessage"]</label>
+                            }
+                        }
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
